@@ -21,6 +21,11 @@ cd <application name>
 npm intsall 
 ```
 
+- Create `.env` file in project root look at `.env-example` for example
+> ### ***Note***: 
+> - REACT_APP_API_BASE_URL= `<backend url>`
+> - REACT_APP_CLIENT_URL= `url where is hosted react application`
+
 - Run
 ```bash
 npm start
