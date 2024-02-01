@@ -32,7 +32,7 @@ source .venv/bin/activate
 
 > ### :warning: **Warning**
 > - All commands with `make` must be run from root folder 
-> - If you do not use `make` cd to folder `api` and run commands manually there
+> - If you do not use `make` open `Makefile` copy command and run it manually 
 
 - Install project dependency
 ```Bash
