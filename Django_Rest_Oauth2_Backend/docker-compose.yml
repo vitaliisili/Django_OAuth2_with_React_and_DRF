@@ -16,7 +16,7 @@ services:
 
   application_api:
     build:
-      context: ./api
+      context: .
       dockerfile: Dockerfile
     command: >
       sh -c "python -m manage migrate && python -m manage collectstatic && 
