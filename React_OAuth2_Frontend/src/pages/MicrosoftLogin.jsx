@@ -20,7 +20,7 @@ const MicrosoftLogin = () => {
 
         const loginHandler = async  (token) => {
             console.log(token)
-            console.log("TOKEN_LENGTH:", token.length())
+            console.log("TOKEN_LENGTH:", token.length)
             try {
                 const response = await axios.post(LOGIN_URL, {
                     grant_type: 'convert_token',
