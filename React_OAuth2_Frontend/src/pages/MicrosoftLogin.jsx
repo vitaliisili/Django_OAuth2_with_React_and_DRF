@@ -19,6 +19,8 @@ const MicrosoftLogin = () => {
         const code = urlParams.get('code');
 
         const loginHandler = async  (token) => {
+            console.log(token)
+            console.log("TOKEN_LENGTH:", token.length())
             try {
                 const response = await axios.post(LOGIN_URL, {
                     grant_type: 'convert_token',
@@ -48,7 +50,6 @@ const MicrosoftLogin = () => {
                 const response = await axios.post('/api/profile/users/microsoft/', {
                     code: code
                 })
-                console.log(response)
                 loginHandler(response?.data?.access_token)
             }catch (error) {
                 console.log("Failed to get microsoft access token: ", error?.response)
