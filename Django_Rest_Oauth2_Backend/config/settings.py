@@ -68,6 +68,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.microsoft.MicrosoftOAuth2',
     'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -90,6 +91,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 SOCIAL_AUTH_GITHUB_KEY = env.str('GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = env.str('GITHUB_SECRET')
 GITHUB_REDIRECT_URL = env.str('GITHUB_REDIRECT_URL')
+
+# Microsoft configuration
+SOCIAL_AUTH_MICROSOFT_OAUTH2_KEY = env.str('MICROSOFT_AUTH_CLIENT_ID')
+SOCIAL_AUTH_MICROSOFT_OAUTH2_SECRET_VALUE = env.str('MICROSOFT_AUTH_CLIENT_SECRET_VALUE')
+SOCIAL_AUTH_MICROSOFT_OAUTH2_REDIRECT_URL = env.str('MICROSOFT_AUTH_REDIRECT_URL')
 
 oauth2_settings.DEFAULTS['ACCESS_TOKEN_EXPIRE_SECONDS'] = 3600
 

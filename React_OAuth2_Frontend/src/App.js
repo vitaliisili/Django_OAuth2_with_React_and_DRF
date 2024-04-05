@@ -9,6 +9,7 @@ import Posts from "./pages/Posts";
 import FacebookLogin from "./pages/FacebookLogin";
 import GoogleLogin from "./pages/GoogleLogin";
 import GithubLogin from "./pages/GithubLogin";
+import MicrosoftLogin from "./pages/MicrosoftLogin";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route exact path='/facebook' element={<FacebookLogin/>}/>
                     <Route exact path='/google' element={<GoogleLogin/>}/>
                     <Route exact path='/github' element={<GithubLogin/>}/>
+                    <Route exact path='/microsoft' element={<MicrosoftLogin/>}/>
                     <Route exact path='/posts' element={<PrivateRoute redirectTo='/'><Posts/></PrivateRoute>}/>
                 </Routes>
             </BrowserRouter>

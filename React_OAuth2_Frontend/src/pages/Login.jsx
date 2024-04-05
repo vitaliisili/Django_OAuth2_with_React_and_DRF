@@ -4,6 +4,7 @@ import {FaLock, FaUser} from "react-icons/fa";
 import google from '../static/images/google.svg'
 import facebook from '../static/images/facebook.svg'
 import linkedin from '../static/images/linkedin.svg'
+import microsoft from '../static/images/windows.png'
 import github from '../static/images/github.svg'
 import {Link, useNavigate} from "react-router-dom";
 import axios from "../api/axios";
@@ -17,6 +18,9 @@ const FACEBOOK_ID = process.env.REACT_APP_FACEBOOK_KEY
 const GOOGLE_ID = process.env.REACT_APP_GOOGLE_OAUTH2_KEY
 const REACT_APP_CLIENT_URL = process.env.REACT_APP_CLIENT_URL
 const GITHUB_ID = process.env.REACT_APP_GITHUB_ID
+const MICROSOFT_ID = process.env.REACT_APP_MICROSOFT_ID
+const MICROSOFT_TENANT = process.env.REACT_APP_MICROSOFT_TENANT
+
 
 const Login = () => {
 
@@ -69,6 +73,10 @@ const [errMsg, setErrMsg] = useState('');
         window.open(`https://github.com/login/oauth/authorize?client_id=${GITHUB_ID}&redirect_uri=${REACT_APP_CLIENT_URL}/github`, '_self')
     }
 
+    const microsoftLoginHandler = () => {
+        window.open(`https://login.microsoftonline.com/${MICROSOFT_TENANT}/oauth2/v2.0/authorize?client_id=${MICROSOFT_ID}&response_type=code&redirect_uri=${REACT_APP_CLIENT_URL}/microsoft&response_mode=query&scope=User.Read`, "_self")
+    }
+
     return (
         <div className="flex h-screen justify-center items-center bg-no-repeat bg-cover" style={{backgroundImage: `url(${login_bg})`}}>
 
@@ -90,7 +98,7 @@ const [errMsg, setErrMsg] = useState('');
                 <div className='flex mt-3 w-full justify-around'>
                     <img onClick={googleLoginHandler} className='cursor-pointer' src={google} alt="google" width='50' height='50'/>
                     <img onClick={facebookLoginHandler} className='cursor-pointer' src={facebook} alt="facebook" width='50' height='50'/>
-                    {/*<img className='cursor-pointer' src={linkedin} alt="linkedin" width='50' height='50'/>*/}
+                    <img onClick={microsoftLoginHandler} className='cursor-pointer' src={microsoft} alt="microsoft" width='50' height='50'/>
                     <img onClick={githubLoginHandler} className='cursor-pointer' src={github} alt="github" width='50' height='50'/>
                 </div>
 
