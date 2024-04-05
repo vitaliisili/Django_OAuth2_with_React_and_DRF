@@ -62,7 +62,7 @@ const [errMsg, setErrMsg] = useState('');
         }
     }
     const facebookLoginHandler = () => {
-        window.open(`https://www.facebook.com/v19.0/dialog/oauth?client_id=${FACEBOOK_ID}&redirect_uri=http://localhost:3000/facebook&state={"{st=state123abc,ds=123456789}"}&response_type=token`, "_self")
+        window.open(`https://www.facebook.com/v19.0/dialog/oauth?client_id=${FACEBOOK_ID}&redirect_uri=${REACT_APP_CLIENT_URL}/facebook&state={"{st=state123abc,ds=123456789}"}&response_type=token`, "_self")
     }
 
     const googleLoginHandler = () => {
