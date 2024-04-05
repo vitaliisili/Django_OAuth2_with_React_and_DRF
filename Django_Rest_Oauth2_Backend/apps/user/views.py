@@ -13,6 +13,7 @@ from apps.user.serializers import BaseUserSerializer, RegisterUserSerializer
 
 logger = logging.getLogger(__name__)
 
+
 class UserViewSet(viewsets.ModelViewSet):
     """API endpoint for managing user accounts."""
 
@@ -53,6 +54,24 @@ class UserViewSet(viewsets.ModelViewSet):
                 'client_secret': settings.SOCIAL_AUTH_GITHUB_SECRET,
                 'redirect_uri': settings.GITHUB_REDIRECT_URL,
                 'code': code
+            }, headers={'Accept': 'application/json'})
+            return Response(response.json(), status=status.HTTP_200_OK)
+        except Exception as e:
+            logger.error("Request failed:", str(e))
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['POST'], detail=False, url_path='microsoft')
+    def microsoft_callback(self, request):
+        data = request.data
+        code = data.get('code')
+        try:
+            response = requests.post('https://login.microsoftonline.com/common/oauth2/v2.0/token', data={
+                'client_id': settings.SOCIAL_AUTH_MICROSOFT_OAUTH2_KEY,
+                'client_secret': settings.SOCIAL_AUTH_MICROSOFT_OAUTH2_SECRET_VALUE,
+                'redirect_uri': settings.SOCIAL_AUTH_MICROSOFT_OAUTH2_REDIRECT_URL,
+                'code': code,
+                'grant_type': 'authorization_code',
+                'scope': 'User.Read'
             }, headers={'Accept': 'application/json'})
             return Response(response.json(), status=status.HTTP_200_OK)
         except Exception as e:

@@ -26,7 +26,11 @@ class UserPermission(permissions.BasePermission):
 
         if view.action == 'list':
             return request.user.is_authenticated and request.user.is_staff
-        elif view.action in ['create', 'reset_password', 'reset_password_confirm', 'github_callback']:
+        elif view.action in ['create',
+                             'reset_password',
+                             'reset_password_confirm',
+                             'github_callback',
+                             'microsoft_callback']:
             return True
         elif view.action == 'destroy':
             return request.user.is_authenticated

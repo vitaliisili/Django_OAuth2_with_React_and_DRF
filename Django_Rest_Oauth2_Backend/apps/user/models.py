@@ -1,5 +1,5 @@
 import uuid
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django_cleanup import cleanup
 
@@ -53,7 +53,7 @@ class UserManager(BaseUserManager):
 
 
 @cleanup.select
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     """A custom user model with additional fields and methods.
 
       Attributes:
